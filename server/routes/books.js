@@ -1,3 +1,10 @@
+// BEGIN DOCUMENT HEADER
+// FILE NAME    :   routes.books.js
+// AUTHOR NAME  :   Erwin Joshua Manuel
+// STUDENT ID   :   301107750
+// DATE CREATED :   10/27/2020
+// END DOCUMENT HEADER
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -29,6 +36,7 @@ router.get('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    //PASSING EMPTY BOOK INTO PAGE
     res.render('books/details', { title: 'Add Book', books: ''});
 });
 
@@ -38,6 +46,7 @@ router.post('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
+    //CREATING NEW BOOK
     let newBook = book({
       "Title": req.body.title,
       "Description": "",
@@ -54,6 +63,7 @@ router.post('/add', (req, res, next) => {
       }
       else
       {
+        //REFRESHING BOOK LIST
         res.redirect('/books');
       }
     })
@@ -75,6 +85,7 @@ router.get('/:id', (req, res, next) => {
       }
       else
       {
+        //PASSING BOOK TO DETAILS VIEW
         res.render('books/details', { title: 'Edit Book', books: bookToEdit});
       }
     })
@@ -105,6 +116,7 @@ router.post('/:id', (req, res, next) => {
       }
       else
       {
+        //REFRESHING BOOKLIST
         res.redirect('/books');
       }
     })
@@ -126,6 +138,7 @@ router.get('/delete/:id', (req, res, next) => {
       }
       else
       {
+        //REFRESHING BOOKLIST
         res.redirect('/books');
       }
     });
